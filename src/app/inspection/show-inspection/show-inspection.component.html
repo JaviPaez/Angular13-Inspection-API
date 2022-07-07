@@ -28,6 +28,18 @@
     </tbody>
 </table>
 
+<div class="alert alert-success" role="alert" id="add-success-alert">
+    Inspection successfully added!
+</div>
+
+<div class="alert alert-success" role="alert" id="update-success-alert">
+    Inspection successfully updated!
+</div>
+
+<div class="alert alert-danger" role="alert" id="delete-success-alert">
+    Inspection successfully deleted!
+</div>
+
 <!-- Show inspection types modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -43,18 +55,19 @@
     </div>
 </div>
 
-<!-- Add new inspection Modal -->
+<!-- Add or edit inspection Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                    (click)="modalClose()" id="add-edit-modal-close"></button>
             </div>
             <div class="modal-body">
                 <app-add-edit-inspection [inspection]="inspection" *ngIf="activateAddEditInspectionComponent">
-                </app-add-edit-inspection>>
+                </app-add-edit-inspection>
             </div>
         </div>
     </div>

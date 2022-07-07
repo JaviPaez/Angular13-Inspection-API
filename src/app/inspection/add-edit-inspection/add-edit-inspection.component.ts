@@ -30,4 +30,42 @@ export class AddEditInspectionComponent implements OnInit {
     this.inspectionList$ = this.service.getInspectionList();
     this.inspectionTypesList$ = this.service.getInspectionTypesList();
   }
+
+  addInspection() {
+    var inspection = {
+      status: this.status,
+      comment: this.comment,
+      inspectionTypeId: this.inspectionTypeId,
+    }
+    this.service.addInspection(inspection).subscribe(res => {
+      var closeModalBtn = document.getElementById('add-edit-modal-close');
+      if (closeModalBtn) closeModalBtn.click();
+
+      var showAddSuccess = document.getElementById('add-success-alert');
+      if (showAddSuccess) showAddSuccess.style.display = "block";
+      setTimeout(() => {
+        if (showAddSuccess) showAddSuccess.style.display = "none";
+      }, 2000);
+    })
+
+    console.log(inspection);
+  }
+
+  updateInspection() {
+    var inspection = {
+      status: this.status,
+      comment: this.comment,
+      inspectionTypeId: this.inspectionTypeId,
+    }
+    this.service.addInspection(inspection).subscribe(res => {
+      var closeModalBtn = document.getElementById('add-edit-modal-close');
+      if (closeModalBtn) closeModalBtn.click();
+
+      var showAddSuccess = document.getElementById('add-success-alert');
+      if (showAddSuccess) showAddSuccess.style.display = "block";
+      setTimeout(() => {
+        if (showAddSuccess) showAddSuccess.style.display = "none";
+      }, 3000);
+    })
+  }
 }

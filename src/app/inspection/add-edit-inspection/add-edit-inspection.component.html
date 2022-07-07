@@ -6,7 +6,30 @@
         <!-- <input type="text" class="form-control" name="inspectionTypeId" [(ngModel)]="inspectionTypeId" *ngIf="inspection.id!=0" disabled> -->
         <select class="form-control" name="inspectionTypeId" id="inspectionTypeId" [(ngModel)]="inspectionTypeId"
             *ngIf="inspection.id==0">
-            <option *ngFor="let type of inspectionTypesList$|async" value="type.id">{{type.name}}</option>
+            <option *ngFor="let type of inspectionTypesList$|async" [value]="type.id">{{type.name}}</option>
         </select>
     </div>
+
+    <!-- Status select-->
+    <div class=" mb-3">
+        <label class="form-label" for="status">Status</label>
+        <select class="form-control" name="status" id="status" [(ngModel)]="status">
+            <option *ngFor="let status of statusList$|async" [value]="status.statusOption">{{status.statusOption}}
+            </option>
+        </select>
+    </div>
+
+    <!-- Comments -->
+    <div class="mb-3">
+        <label class="form-label" for="comment">Comment</label>
+        <input type="text" class="form-control" [(ngModel)]="comment" name="comment">
+    </div>
+
+    <button class="btn btn-primary" (click)="addInspection()" *ngIf="inspection.id==0">
+        Add
+    </button>
+
+    <button class="btn btn-primary" (click)="updateInspection()" *ngIf="inspection.id!=0">
+        Update
+    </button>
 </form>
