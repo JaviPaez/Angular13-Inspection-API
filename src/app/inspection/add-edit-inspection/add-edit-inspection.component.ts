@@ -53,18 +53,20 @@ export class AddEditInspectionComponent implements OnInit {
 
   updateInspection() {
     var inspection = {
+      id: this.id,
       status: this.status,
       comment: this.comment,
       inspectionTypeId: this.inspectionTypeId,
     }
-    this.service.addInspection(inspection).subscribe(res => {
+    // var id: number = this.id;
+    this.service.updateInspection(this.id, inspection).subscribe(res => {
       var closeModalBtn = document.getElementById('add-edit-modal-close');
       if (closeModalBtn) closeModalBtn.click();
 
-      var showAddSuccess = document.getElementById('add-success-alert');
-      if (showAddSuccess) showAddSuccess.style.display = "block";
+      var showUpdateSuccess = document.getElementById('update-success-alert');
+      if (showUpdateSuccess) showUpdateSuccess.style.display = "block";
       setTimeout(() => {
-        if (showAddSuccess) showAddSuccess.style.display = "none";
+        if (showUpdateSuccess) showUpdateSuccess.style.display = "none";
       }, 3000);
     })
   }

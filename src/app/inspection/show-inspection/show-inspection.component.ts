@@ -40,6 +40,12 @@ export class ShowInspectionComponent implements OnInit {
     this.activateAddEditInspectionComponent = true;
   }
 
+  modalEdit(item: any) {
+    this.inspection = item;
+    this.modalTitle = "Edit Inspection";
+    this.activateAddEditInspectionComponent = true;
+  }
+
   modalClose() {
     this.activateAddEditInspectionComponent = false;
     this.inspectionList$ = this.service.getInspectionList();

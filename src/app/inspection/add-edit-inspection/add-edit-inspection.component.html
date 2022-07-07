@@ -3,7 +3,8 @@
         <label for="inspectionTypeId" class="form-label">
             Inspection Type
         </label>
-        <!-- <input type="text" class="form-control" name="inspectionTypeId" [(ngModel)]="inspectionTypeId" *ngIf="inspection.id!=0" disabled> -->
+        <input type="text" class="form-control" name="inspectionTypeId" [(ngModel)]="inspectionTypeId"
+            *ngIf="inspection.id!=0" disabled>
         <select class="form-control" name="inspectionTypeId" id="inspectionTypeId" [(ngModel)]="inspectionTypeId"
             *ngIf="inspection.id==0">
             <option *ngFor="let type of inspectionTypesList$|async" [value]="type.id">{{type.name}}</option>
