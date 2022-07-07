@@ -46,6 +46,22 @@ export class ShowInspectionComponent implements OnInit {
     this.activateAddEditInspectionComponent = true;
   }
 
+  delete(item: any) {
+    if (confirm(`Are you sure you want to delete Inspection ${item.id}?`)) {
+      this.service.deleteInspection(item.id).subscribe(res => {
+        var closeModalBtn = document.getElementById('add-edit-modal-close');
+        if (closeModalBtn) closeModalBtn.click();
+
+        var showDeleteSuccess = document.getElementById('delete-success-alert');
+        if (showDeleteSuccess) showDeleteSuccess.style.display = "block";
+        setTimeout(() => {
+          if (showDeleteSuccess) showDeleteSuccess.style.display = "none";
+        }, 3000);
+        this.inspectionList$ = this.service.getInspectionList();
+      })
+    }
+  }
+
   modalClose() {
     this.activateAddEditInspectionComponent = false;
     this.inspectionList$ = this.service.getInspectionList();
